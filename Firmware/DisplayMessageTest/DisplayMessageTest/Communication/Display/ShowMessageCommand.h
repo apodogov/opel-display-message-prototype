@@ -10,9 +10,10 @@ typedef enum MessageDestination {
 } MessageDestination;
 
 typedef enum MessageType {
-	MessageType_SongTitle = 0x10,
+	MessageType_SongTitle = 0x10, // Has higher priority in CD mode.
 	MessageType_AlbumTitle = 0x11,
 	MessageType_Artist = 0x12,
+	MessageType_Source = 0x90, // E.g. "Extern In" is sent with this code. Has higher priority in Extern In mode.
 } MessageType;
 
 typedef struct ShowMessageCommandHeader {

@@ -9,6 +9,7 @@ typedef enum TextModifiers {
 	TextModifiers_Normal = 0x01,
 	TextModifiers_Small = 0x02,
 	TextModifiers_Center = 0x04,
+	TextModifiers_Right = 0x08,
 	
 	TextModifiers_Default = TextModifiers_Center | TextModifiers_Normal,
 } TextModifiers;

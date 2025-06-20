@@ -1,7 +1,8 @@
 #pragma once
 
 typedef enum DisplayCommandType {
-	DisplayCommandType_ShowMessage = 0x40,
+	//DisplayCommandType_ShowMessage = 0x40,
+	DisplayCommandType_ShowMessage = 0xC0,
 } DisplayCommandType;
 
 typedef struct DisplayCommandHeader {

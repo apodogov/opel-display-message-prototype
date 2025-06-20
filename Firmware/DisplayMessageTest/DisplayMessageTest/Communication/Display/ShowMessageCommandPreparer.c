@@ -10,7 +10,7 @@ static bool wasOverflowed;
 
 static void AddUnicodeSymbol(uint8_t asciiCode)
 {
-	// Because we support only ASCII symbols, for simplification, instead of supporting Unicode, just prefix each symbol by 0x00.
+	// Because we support only ASCII symbols, for simplification, instead of supporting Unicode, just prefix each symbol with 0x00.
 	if (freeSize < 2)
 	{
 		wasOverflowed = true;
@@ -40,6 +40,7 @@ static void AddModifierString(char* s)
 static void AddModifiers(TextModifiers modifiers)
 {
 	if (modifiers & TextModifiers_Center) AddModifierString("c");
+	if (modifiers & TextModifiers_Right) AddModifierString("r");
 	if (modifiers & TextModifiers_Small) AddModifierString("fS_d");
 	if (modifiers & TextModifiers_Normal) AddModifierString("fS_g");
 }
@@ -51,7 +52,7 @@ uint8_t PrepareMessageCommand(char* message, uint8_t* displayBuffer, uint8_t buf
 	
 	ShowMessageCommand* showMessageCommand = (ShowMessageCommand*)&command->Body;
 	showMessageCommand->Header.Destination = MessageDestination_MainScreenAudio;
-	showMessageCommand->Header.Type = MessageType_SongTitle;
+	showMessageCommand->Header.Type = MessageType_Source; // Works in Extern In, but doesn't work in CD.
 	
 	position = (uint8_t*)&showMessageCommand->Body;
 	messageSize = 0;
